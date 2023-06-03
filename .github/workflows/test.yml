@@ -1,23 +1,15 @@
-name: Test Action
+name: Main
 
 on:
   push:
-    tags: ["*"]
+    tags:
+      - "v*.*.*"
 
 jobs:
-  print-hello:
-    runs-on: ${{ matrix.os }}
-    timeout-minutes: 1
-    steps: 
-      - uses: actions/checkout@v3
-      - uses: "marvinpinto/action-automatic-releases@latest"
-        with:
-          repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          automatic_release_tag: "latest"
-          prerelease: true
-          title: "Development Build"
-          files: |
-            LICENSE
-    strategy:
-      matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Release
+        uses: softprops/action-gh-release@v1
