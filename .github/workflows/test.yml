@@ -6,9 +6,12 @@ on:
 jobs:
   print-hello:
     runs-on: ${{ matrix.os }}
+    timeout-minutes: 1
     steps: 
-      - run: echo "Hello world!"
-      # - shell: bash
+      - uses: actions/checkout@v2
+      - name: Echo a hello world!
+        run: echo "Hello world!"
+        shell: bash
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest]
