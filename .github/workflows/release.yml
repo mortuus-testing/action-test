@@ -1,0 +1,13 @@
+on:
+    push:
+        tags:
+          - "*"
+
+jobs:
+    create-new-release:
+        strategy:
+            matrix:
+                os: [ubuntu-latest, windows-latest, macos-latest]
+        runs-on: {{ matrix.os }}
+        steps:
+            - run: echo "Create release for " {{matrix.os}}
