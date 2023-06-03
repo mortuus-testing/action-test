@@ -10,13 +10,10 @@ jobs:
     runs-on: ${{ matrix.os }}
     timeout-minutes: 1
     steps: 
-      - uses: actions/checkout@v3
-      - name: Create a release
-        uses: elgohr/Github-Release-Action@v4
-        env:
-          GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
-        with:
-          title: MyReleaseMessage
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Release
+        uses: softprops/action-gh-release@v1
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
