@@ -4,7 +4,7 @@ on:
       - main
 
 jobs:
-  print_hello:
+  print-hello:
     runs-on: ubuntu-latest
     steps: 
       - run: echo "Hello world!"
