@@ -10,7 +10,14 @@ jobs:
     timeout-minutes: 1
     steps: 
       - uses: actions/checkout@v3
-      - uses: ncipollo/release-action@v1
+      - uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: "latest"
+          prerelease: true
+          title: "Development Build"
+          files: |
+            LICENSE
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
