@@ -2,8 +2,7 @@ name: Test Action
 
 on:
   push:
-    branches:
-      - main
+    tags: ["*"]
 
 jobs:
   print-hello:
